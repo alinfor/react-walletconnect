@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/web3modal@1.9.12/dist/index.min.js"></script>
+<script>
+    const web3Modal = new Web3Modal({
+        network: "mainnet",  // Choisissez le réseau approprié
+        cacheProvider: true,  // Cachez le fournisseur pour éviter de demander la connexion à chaque fois
+        providerOptions: {
+            walletconnect: {
+                rpc: {
+                    1: 'https://mainnet.infura.io/v3/351672d980cd407c9b14aea507bf5284',
+                },
+            },
+            fortmatic: {
+                rpcUrl: 'https://mainnet.infura.io/v3/351672d980cd407c9b14aea507bf5284',
+                chainId: 1,
+                key: 'YOUR_FORTMATIC_KEY',
+            },
+            portis: {
+                id: 'YOUR_PORTIS_ID',
+            },
+            // Ajoutez d'autres fournisseurs si nécessaire
+        },
+    });
+
+    const connectButton = document.getElementById('connectButton');
+
+    connectButton.addEventListener('click', async () => {
+        const provider = await web3Modal.connect();
+        const web3 = new Web3(provider);
+        // Utilisez web3 pour interagir avec la blockchain
+    });
+</script>
+
+</body>
+</html>
